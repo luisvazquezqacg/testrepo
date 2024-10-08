@@ -1,0 +1,6 @@
+package com.example.test_app.model
+
+data class QuoteModel(
+    val quote:String,
+    val author: String
+)
