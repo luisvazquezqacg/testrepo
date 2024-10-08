@@ -11,7 +11,9 @@ import androidx.lifecycle.Observer
 import com.example.test_app.R
 import com.example.test_app.databinding.ActivityMainBinding
 import com.example.test_app.ui.viewmodel.QuoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class  MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private val quoteViewModel: QuoteViewModel by viewModels()
