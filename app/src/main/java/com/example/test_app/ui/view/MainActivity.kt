@@ -1,4 +1,4 @@
-package com.example.test_app.view
+package com.example.test_app.ui.view
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.example.test_app.R
 import com.example.test_app.databinding.ActivityMainBinding
-import com.example.test_app.viewmodel.QuoteViewModel
+import com.example.test_app.ui.viewmodel.QuoteViewModel
 
 class  MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
@@ -26,10 +27,16 @@ class  MainActivity : AppCompatActivity() {
             insets
         }
 
+        quoteViewModel.onCreate()
+
         quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
             binding.tvQuote.text = currentQuote.quote
             binding.tvAuthor.text = currentQuote.author
         })
+
+        quoteViewModel.isLoading.observe(this) {
+            binding.progress.isVisible = it
+        }
 
         binding.viewContainer.setOnClickListener{
             quoteViewModel.randomQuote()

@@ -56,4 +56,12 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     //Activity
     implementation(libs.androidx.activity.ktx)
+    //Fragment
+    implementation(libs.androidx.fragment.ktx)
+    // Retrofit
+    implementation(libs.retrofit)
+    // Gson Converter
+    implementation(libs.converter.gson)
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.android)
 }
