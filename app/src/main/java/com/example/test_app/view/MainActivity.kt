@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.example.test_app.R
 import com.example.test_app.databinding.ActivityMainBinding
 import com.example.test_app.viewmodel.QuoteViewModel
 
-class MainActivity : AppCompatActivity() {
+class  MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private val quoteViewModel: QuoteViewModel by viewModels()
 
@@ -23,6 +24,15 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
+            binding.tvQuote.text = currentQuote.quote
+            binding.tvAuthor.text = currentQuote.author
+        })
+
+        binding.viewContainer.setOnClickListener{
+            quoteViewModel.randomQuote()
         }
 
     }
