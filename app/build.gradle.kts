@@ -70,10 +70,16 @@ dependencies {
     implementation(libs.converter.gson)
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
-
     // Dagger & Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation(libs.hilt.android.v2511)
+    kapt(libs.hilt.android.compiler)
+    //Room
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    // To use Kotlin annotation processing tool (kapt)
+    kapt(libs.androidx.room.compiler)
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
 
 
 
